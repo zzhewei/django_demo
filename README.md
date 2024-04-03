@@ -36,6 +36,14 @@ docker exec -it server python manage.py createsuperuser
 
 之後即可使用任一 API
 
+**錯誤處理**
+
+若運行 docker 發生以下錯誤
+```shell
+server      | /usr/bin/env: ‘bash\r’: No such file or directory
+```
+麻煩將 dbsetup.sh 的換行符號從 windows 換成 unix 即可
+
 ## Running the tests
 
 運行測試
