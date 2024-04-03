@@ -1,0 +1,29 @@
+version: "3.7"
+
+services:
+  django:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: server
+    environment:
+      - APP_NAME=django_demo
+      - DATABASE_NAME=article
+      - DATABASE_USER=postgres
+      - DB_HOST=db
+      - DATABASE_PASSWORD=root
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    restart: always
+
+  db:
+    build:
+      context: ./sqldata
+      dockerfile: Dockerfile
+    container_name: postgresql
+    environment:
+      POSTGRES_DB: article
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
